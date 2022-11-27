@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="JS/jquery-3.1.1.js" type="text/javascript"></script>
+    <title>剪刀石頭布</title>
+</head>
+<body>
+
+    <div id="body">
+        <header>
+            <a href="home.html" id="logo">返回</a>
+            <p id="title">猜拳遊戲</p>
+        </header>
+
+        <div id="text">
+            你要出的是
+        </div>
+
+        <div id="imgs">
+            <img src="../img/剪刀.png" id="scissors" onclick="scissors()"class="img1" height="150" width="150"/>
+            <img src="../img/石頭.png" id="Rock" onclick="Rock()"class="img1"height="150" width="150"/>
+            <img src="../img/布.png" id="paper" onclick="paper()" class="img1" height="150" width="150"/>
+        </div>
+
+        <div id="jieguo">
+            <div class="jieguo">
+                <p id="text">你選擇的</p>
+                <img src="" id="myImg" />
+            </div>
+
+            <div class="pk">PK</div>
+
+            <div class="jieguo">
+                <p id="text" >電腦選擇的</p>
+                <img src="" id="computer" />
+            </div>
+        </div>
+
+        <p id="result">
+            結果出爐中...
+        </p>
+        <div id="score">
+            <span>00</span>：<span>00</span>
+        </div>
+    </div>
+</body>
+
+<style type="text/css">
+    @import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #body{
+        min-height: 100vh;
+        width: 100%;
+        margin: 0 auto;
+        background-color: #efcf31;
+        overflow: hidden;
+    }
+
+    header {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 35px;
+        padding: 2px 20px;
+        display: flex;
+        align-items: center;
+        background-color: #007bff;
+    }
+
+    #logo ,#text{
+        font-family: 'cwTeXYen', sans-serif;
+        text-align: center;
+        color: #fff;
+        font-size: 25px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        background-color: rgb(242, 245, 242);
+        color: #000000;
+        border-style: outset;
+        border-radius: 6px;
+    }
+    #logo:hover,
+    #logo.active 
+    {
+        background-color: rgb(220, 27, 27);
+        border-style: outset;
+        color: #f8f8f8;
+        border-radius: 6px;
+    }
+
+    #imgs{
+        width: 80%;
+        height: 155px;
+        margin: 5px auto;
+        display: flex;
+        justify-content: space-around;
+        border-style: outset;
+        background-color: rgb(255, 255, 255);
+    }
+    img:hover,
+    img.active 
+    {
+        background-color: rgb(225, 23, 23);
+        border-style: outset;
+        border-radius: 6px;
+    }
+
+
+    #title
+    {
+        font-family: 'cwTeXYen', sans-serif;
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+    #jieguo{
+        width: 90%;
+        margin: 5px auto;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    #jieguo .jieguo div{
+        height: 30px;
+        width: 89px;
+        line-height: 30px;
+        text-align: center;
+        color: white;
+    }
+
+    #jieguo .jieguo img{
+        height: 89px;
+    }
+
+    #jieguo .pk{
+        height: 120px;
+        line-height: 120px;
+        font-size: 48px;
+        font-weight: bold;
+    }
+
+    #result,#score{
+        text-align: center;
+        padding-top: 0%;
+        margin: 5px auto;
+        width: 30%;
+        font-size: 24px;
+        border-style: outset;
+        background-color: rgb(255, 255, 255);
+        color: rgb(187, 11, 11);
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-weight: bold;
+    }
+
+</style>
+
+<script type="text/javascript">
+
+    var scissors = document.getElementById("scissors");
+    var Rock = document.getElementById("Rock");
+    var paper = document.getElementById("paper");
+    var myImg = document.getElementById("myImg");
+    var computer = document.getElementById("computer");
+    var result = document.getElementById("result");
+    var score = document.getElementById("score");
+
+    var myScore=0,comScore=0;
+
+    var imgs = ["../img/剪刀.png", "../img/石頭.png", "../img/布.png"];
+
+    console.log(imgs[0]);  //顯示選擇圖
+
+    scissors.onclick = function(){
+        var imgSrc = scissors.getAttribute("src");
+        myImg.setAttribute("src",imgSrc);
+        checkImg(imgSrc);
+    }
+
+    Rock.onclick = function(){
+        var imgSrc = Rock.getAttribute("src");
+        myImg.setAttribute("src",imgSrc);
+        checkImg(imgSrc);
+    }
+
+    paper.onclick = function(){
+        var imgSrc = paper.getAttribute("src");
+        myImg.setAttribute("src",imgSrc);
+        checkImg(imgSrc);
+    }
+
+
+    function checkImg(imgSrc){
+        var myIndex = imgs.indexOf(imgSrc);
+        var intervalId = setInterval(function(){ //setInterval定時(參數1是執行的内容 參數2執行的時間)
+            var num = parseInt(Math.random()*3); //做出電腦猜拳動作
+            computer.setAttribute("src",imgs[num]);
+
+        },40);
+
+        setTimeout(function(){ //定時執行
+            clearInterval(intervalId); //時間停止
+            var comSrc = computer.getAttribute("src");
+            var comIndex = imgs.indexOf(comSrc);
+            if(myIndex==comIndex){
+                result.innerHTML = "平手！！";
+            }else if(myIndex==0&&comIndex==2|| myIndex==1&&comIndex==0|| myIndex==2&&comIndex==1){
+                result.innerHTML = "贏一局囉!!不錯喔";
+                myScore++;
+            }else{
+                result.innerHTML = "輸了!!再一場贏回來";
+                comScore++;
+            }
+            myScore = (myScore+"").length<2?"0"+myScore:myScore+"";
+            comScore = (comScore+"").length<2?"0"+comScore:comScore+"";
+
+            score.firstElementChild.innerHTML = myScore;
+            score.lastElementChild.innerHTML = comScore;
+
+        },400);
+    }
+
+
+
+</script>
+
+</html>

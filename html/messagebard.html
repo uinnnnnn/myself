@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <!---首頁的css圖案--->
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <title>留言板(html+css+boostrap+javascript)</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+
+        <a class="btn btn-dark" href="home.html" ><i class="fi fi-rr-home" style="size: 5em; color:#ffff"></i></a>
+
+        <div class="navbar-brand">留言板</div>
+
+    </nav>
+
+    <div class="card mt-2">
+        <div class="card-header">
+            <div class="font-weight-bold"><i class="fas fa-file-alt"></i> 新增留言區</div>
+        </div>
+        <div class="card-body">
+            <ul class="navbar-nav ml-auto" id="uuuuullll">
+                姓名：<textarea class="user" id="textarea" type="text"></textarea><br />
+                留言內容：<textarea class="com" id="textarea2" type="text"></textarea><br />
+                <input value="新增留言" type="button" id="btn" />
+            </ul>
+        </div>
+
+
+        <div class="card mt-2">
+            <div class="card-header">
+                <div class="font-weight-bold"><i class="fas fa-file-alt"></i> 已留言區</div>
+            </div>
+            <div class="card-body">
+                <ul id="uuullll">
+                   
+                    <style>
+                        #uuullll a {
+                            float: right;
+                        }
+
+                        li {
+                            border: 2px rgb(97, 96, 96) solid;
+                        }
+
+                        #MessageDeleteButton {
+                            color: white;
+                            background-color: #db4c3f;
+                            border: 1px solid transparent;
+                            border-radius: 4px;
+                            font-size: 16px;
+                            padding: 4px 8px;
+                            float: right;
+                        }
+
+                        #MessageEditButton {
+                            color: #ddd;
+                            background-color: #343a40;
+                            border: 1px solid transparent;
+                            border-radius: 4px;
+                            font-size: 16px;
+                            padding: 4px 8px;
+                            float: right;
+                        }
+                    </style>
+
+                </ul>
+            </div>
+
+            <script>
+                // 點擊新增留言，會把文本域中的內容發佈到ul中
+                // 點擊刪除，會刪除留言
+                var text = document.querySelector('textarea', 'textarea2');
+                var btn = document.querySelector('btn');
+                var ul = document.querySelector('ul');
+                var btn = document.getElementById("btn");
+                //送出id為btn的節點賦值給btn.
+                // $(document).ready(function(){
+                //     $(btn1).click(function(){
+                //     })
+                // });
+
+                btn.onclick = function () {
+                    // 首先會創建一個li  並把文本域的內容給li 再把li添加到ul中
+                    var li = document.createElement('li');
+
+                    if (text.value == '') {
+                        alert('您沒有輸入內容')
+                    } else {
+                        // 文本域的值 value
+                        // 增加一個刪除留言的按鈕
+                        //寫入發表留言的時間
+                       // var ul = document.createElement("uuullll");
+                        //uuullll.className = "time";
+				//var myDate = new  Date();
+                
+                li.innerHTML = '姓名:' + text.value + '<br></br>' + '留言內容:' + textarea2.value + '<a href="javascript:;" id="MessageEditButton">編輯</a>' + '<a href="javascript:;" id="MessageDeleteButton">刪除</a>';
+                uuullll.insertBefore(li, uuullll.children[0]); // 把最新的發佈放到最前面
+				//uuullll.appendChild(uuullll);
+                        // ul.appendChild(li);
+                        var removeBtn = document.querySelectorAll('a');
+                        for (var i = 0; i < removeBtn.length; i++) {
+                            removeBtn[i].onclick = function () {
+                                uuullll.removeChild(this.parentNode);
+                            }
+                        }
+                    }
+                }
+            </script>
+    </body>
+
+</html>

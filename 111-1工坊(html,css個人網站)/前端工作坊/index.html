@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>個人日記簿</title>
+        <link rel="stylesheet" type="text/css" href="./color.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <script src="./photo.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <a class="navbar-brand" href="./index.html">XinRu的個人網頁</a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html">首頁</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.pu.edu.tw/">靜宜大學</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.youtube.com/">YouTube</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div>
+            <span id="date"></span>
+            <span id="time"></span>
+        </div>
+
+        <div class="plan">
+            <h2>規劃表</h2>
+            <table class="table table-bordered align-middle table-hover">
+                <thead>
+                    <tr>
+                        <th>時間</th>
+                        <th>項目</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <th>8月29日  08:00 - 16:00</th>
+                    <th>新生啟航週第一天</th>
+                </tr>
+                <tr>
+                    <th>8月30日 08:00 - 17:00</th>
+                    <th>新生啟航週第二天</th>
+                </tr>
+                <tr>
+                    <th>8月31日 08:00 - 12:00</th>
+                    <th>新生啟航週第三天</th>
+                </tr>
+                <tr>
+                    <th>9月5日</th>
+                    <th>開學</th>
+                </tr>
+                <tr>
+                    <th>9月8日 11:00 - 13:00</th>
+                    <th>朋友約飯</th>
+                </tr>
+                <tr>
+                    <th>...</th>
+                    <th>...</th>
+                </tr>
+                <tr>
+                    <th>...</th>
+                    <th>...</th>
+                </tr>
+                <tr>
+                    <th>...</th>
+                    <th>...</th>
+                </tr>
+                <tr>
+                    <th>...</th>
+                    <th>...</th>
+                </tr>
+            </table>
+        </div>
+        <div class="note">
+            <h2>筆記 & 日記區</h2>
+            <textarea class="input" rows="19" cols="80" value="" placeholder="描述......" required=""></textarea>
+            <input class="button" type="submit" value="送出">
+        </div>
+    </body>
+</html>
